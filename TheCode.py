@@ -11,6 +11,13 @@ import sys
 while 1 == 1:
     try:
         bottles = int(input("How many bottles start on the wall: "))
+        
+        #Making sure the user does not input a number less than 1, because nothing would even happen
+        if bottles <= 0:
+            print("Please input a valid number.")
+            continue
+        
+        #If everything checks out, the program will carry on
         break
     
 #Exception Handling, for if the user inputs a non valid value, such as a character
