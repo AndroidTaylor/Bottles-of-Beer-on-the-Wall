@@ -1,23 +1,36 @@
 #Written by Andrew Taylor April 25, 2019
 #This program takes any number bottles of beer on a wall, and counts down. As the song 
-#continues, the text gets more incoherent, simulating the speaking drinking the beer
+#continues, the text gets more incoherent, simulating the speaker drinking the beer
 
 #These are some important modules that I used to make the program
 from time import sleep
 import random
 import sys
+import os
+
+#I often run my programs in a terminal using a text file plus an interpreter, this is just so that it looks cleaner when I run it
+os.system('clear')
+
+
+#Title
+print("*******************************************************")
+print("***   Bottles of Beer on the Wall (Drunk edition)   ***")
+print("*******************************************************")
+
 
 #Asking for INPUT
 while 1 == 1:
     try:
         bottles = int(input("How many bottles start on the wall: "))
-        
         #Making sure the user does not input a number less than 1, because nothing would even happen
         if bottles <= 0:
             print("Please input a valid number.")
             continue
+        else:
+            pass
         
         #If everything checks out, the program will carry on
+        print("\n")
         break
     
 #Exception Handling, for if the user inputs a non valid value, such as a character
@@ -116,24 +129,19 @@ How many bottles start on the wall: 5
 5 bottles of beer. 
 Take one down, pass it around, 
 4 bottles of beer on the wall.
-
 4 bottles of beer on the wall, 
 4 bottles of beer. 
 Take one down, pass it around, 
 3 bottles of beer on the wall.
-
 3  ottles of beer on the wall, 
 3*hic*bottl*hic*s of beer  
 Take *hic*ne down, pass i  around, 
 2 bottl*hic*s of beer on the wal .
-
 2 bott  s of beer on the wal*hic*, 
 2 bottles of beeR. 
 T*hic*ke one down, pass it*hic*around, 
 1 botTl*hic* of beeR on tHe wall.
-
 11 BboTt*hic*tle of  *hic*bE r On the ww*hic*Lll, 
-
 1 boTttlee  oF  beEr..*hic*
 TTaK  O Ee dooWwNn, pAsss iiT  aroUndd, 
 0  ooTtttlles  of beer on  thhe wwaLl*hic*.
