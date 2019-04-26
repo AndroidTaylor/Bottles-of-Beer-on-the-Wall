@@ -8,9 +8,6 @@ import random
 import sys
 import os
 
-#I often run my programs in a terminal using a text file plus an interpreter, this is just so that it looks cleaner when I run it
-os.system('clear')
-
 
 #Header
 print("*******************************************************")
