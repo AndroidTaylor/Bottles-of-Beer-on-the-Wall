@@ -7,6 +7,7 @@
 from time import sleep
 import random
 import sys
+import os
 
 
 
@@ -73,7 +74,7 @@ def passingbottle(sentence, HicCounter, SpaceCounter, UpperCaseCounter):
     
     
                 #Randomly replaces characters with '*hic*'
-                elif drunkness*random.randint(0,100) == 80:
+                elif drunkness*random.randint(0,100) == 75:
                     HicCounter -= 1
                     
                     #This prevents the program form spamming out "*Hic*'s"
@@ -82,7 +83,7 @@ def passingbottle(sentence, HicCounter, SpaceCounter, UpperCaseCounter):
                         HicCounter = random.randint(0,5)
                         
                     #Randomly Replaces characters with a space
-                    elif drunkness*random.randint(0,100) == 80:
+                    elif drunkness*random.randint(0,100) == 75:
                     
                         #Prevents the spamming of spaces
                         if SpaceCounter == 0:
