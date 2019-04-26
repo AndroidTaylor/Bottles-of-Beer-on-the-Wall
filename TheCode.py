@@ -8,11 +8,8 @@ import random
 import sys
 import os
 
-#I often run my programs in a terminal using a text file plus an interpreter, this is just so that it looks cleaner when I run it
 os.system('clear')
-
-
-#Title
+#Greeter
 print("*******************************************************")
 print("***   Bottles of Beer on the Wall (Drunk edition)   ***")
 print("*******************************************************")
@@ -39,10 +36,12 @@ while 1 == 1:
 
 #Defining variable to use later
 drunkness = -1
+HicCounter = 1
+SpaceCounter = 1
 
 #This Function is used to write the text into the terminal, with the included the 
 #effects of alcohol
-def passingbottle(sentence):
+def passingbottle(sentence, HicCounter, SpaceCounter):
     #This repeats the following for every character in the sentence.
     for char in sentence:
             if drunkness >= 2:
@@ -57,13 +56,26 @@ def passingbottle(sentence):
                     sys.stdout.flush()
                 
                 #Randomly replaces characters with '*hic*'
-                elif random.randint(0,50) == 50:
-                    print("*hic*", end='')
+                elif drunkness*random.randint(0,100) == 90:
+                    HicCounter -= 1
+                    
+                    #This prevents the program form spamming out "*Hic*'s"
+                    if HicCounter == 0:
+                        print("*hic*", end='')
+                        HicCounter = random.randint(0,5)
+                    else:
+                        pass
                 
                 #Randomly Replaces characters with a space
-                elif random.randint(0,50) == 50:
-                    sys.stdout.write(" ")
-                    sys.stdout.flush()
+                elif drunkness*random.randint(0,100) == 90:
+                    
+                    #Prevents the spamming of spaces
+                    if SpaceCounter == 0:
+                        sys.stdout.write(" ")
+                        sys.stdout.flush()
+                        SpaceCounter = random.randint(0,3)
+                    else:
+                        pass
                 
                 #Just normally writes the character
                 else:
@@ -99,7 +111,7 @@ while (bottles >= 1):
         bottles_str = str(bottles)
         bottles2_str = str(bottlesminusone)
         sentence = (bottles_str + " bottles of beer on the wall, \n" + bottles_str + " bottles of beer. \n" + "Take one down, pass it around, \n" + bottles2_str + " bottles of beer on the wall.\n\n")
-        passingbottle(sentence)
+        passingbottle(sentence, HicCounter, SpaceCounter)
         bottles = bottles - 1
     
     #This case is for when the first two mentions of bottles is plural, but the last is singular
@@ -108,7 +120,7 @@ while (bottles >= 1):
         bottles_str = str(bottles)
         bottles2_str = str(bottlesminusone)
         sentence = (bottles_str + " bottles of beer on the wall, \n" + bottles_str + " bottles of beer. \n" + "Take one down, pass it around, \n" + bottles2_str + " bottle of beer on the wall.\n\n")
-        passingbottle(sentence)
+        passingbottle(sentence, HicCounter, SpaceCounter)
         bottles = bottles - 1
     
     #This case is for if the first two mention of bottles is singular, and I choose to make zero bottles be plural
@@ -117,7 +129,7 @@ while (bottles >= 1):
         bottles_str = str(bottles)
         bottles2_str = str(bottlesminusone)
         sentence = (bottles_str + " bottle of beer on the wall, \n" + bottles_str + " bottle of beer. \n" + "Take one down, pass it around, \n" + bottles2_str + " bottles of beer on the wall.\n \nWhew, that was a mouth full!")
-        passingbottle(sentence)
+        passingbottle(sentence, HicCounter, SpaceCounter)
         bottles = bottles - 1
         print("\n")
         
