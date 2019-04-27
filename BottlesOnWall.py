@@ -42,6 +42,7 @@ HicCounter = 1
 SpaceCounter = 1
 UpperCaseCounter = 0
 numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '\n']
+
 #This Function is used to write the text into the terminal, with the included the 
 #effects of alcohol
 def passingbottle(sentence, HicCounter, SpaceCounter, UpperCaseCounter):
@@ -51,60 +52,66 @@ def passingbottle(sentence, HicCounter, SpaceCounter, UpperCaseCounter):
                 
                 #Adds semi-random slowing to the typing
                 sleep(0.01*(random.choice(drunklist)))
+
+                #Preventing line brakes from being over written, for readability
+                if char == "\n":
+                    sys.stdout.write(char)
+
+                else:
                 
-                #Adds random upper cased characters that get more frequent as the song continues
-                case = random.random()*100
+                    #Adds random upper cased characters that get more frequent as the song continues
+                    case = random.random()*100
                 
-                #Preventing more than 4 caps in a row, otherwise it just looks like I put caps lock on for no reason.
-                if case*drunkness >= 200:
+                    #Preventing more than 4 caps in a row, otherwise it just looks like I put caps lock on for no reason.
+                    if case*drunkness >= 195:
                     
-                    if UpperCaseCounter < 4:
-                        sys.stdout.write(char.upper())
-                        sys.stdout.flush()
-                        UpperCaseCounter += 1
-                    else:
+                        if UpperCaseCounter < 4:
+                            sys.stdout.write(char.upper())
+                            sys.stdout.flush()
+                            UpperCaseCounter += 1
+                        else:
+                            sys.stdout.write(char)
+                            sys.stdout.flush()
+                            UpperCaseCounter = 0
+                    elif UpperCaseCounter >= 4:
                         sys.stdout.write(char)
                         sys.stdout.flush()
                         UpperCaseCounter = 0
-                elif UpperCaseCounter >= 4:
-                    sys.stdout.write(char)
-                    sys.stdout.flush()
-                    UpperCaseCounter = 0
      
     
     
-                #Randomly replaces characters with '*hic*'
-                elif drunkness*random.randint(0,100) == 75:
-                    HicCounter -= 1
+                    #Randomly replaces characters with '*hic*'
+                    elif drunkness*random.randint(0,100) >= 290:
+                        HicCounter -= 1
                     
-                    #This prevents the program form spamming out "*Hic*'s"
-                    if HicCounter == 0:
-                        print("*hic*", end='')
-                        HicCounter = random.randint(0,5)
+                        #This prevents the program form spamming out "*Hic*'s"
+                        if HicCounter == 0:
+                            print("*hic*", end='')
+                            HicCounter = random.randint(0,5)
                         
-                    #Randomly Replaces characters with a space
-                    elif drunkness*random.randint(0,100) == 75:
+                        #Randomly Replaces characters with a space
+                        elif drunkness*random.randint(0,100) >= 250:
                     
-                        #Prevents the spamming of spaces
-                        if SpaceCounter == 0:
-                            sys.stdout.write(" ")
-                            sys.stdout.flush()
-                            SpaceCounter = random.randint(0,3)
-                        else:
-                            pass
+                            #Prevents the spamming of spaces
+                            if SpaceCounter == 0:
+                                sys.stdout.write(" ")
+                                sys.stdout.flush()
+                                SpaceCounter = random.randint(0,3)
+                            else:
+                                pass
                 
-                #Just normally writes the character
-                else:
-                    sys.stdout.write(char)
-                    sys.stdout.flush()
+                    #Just normally writes the character
+                    else:
+                        sys.stdout.write(char)
+                        sys.stdout.flush()
                         
-                #If the program has not taken 3 bottles of beer, all characters and typing speeds are normal.
+                    #If the program has not taken 3 bottles of beer, all characters and typing speeds are normal.
             else:
                 sleep(0.05)
                 sys.stdout.write(char)
                 sys.stdout.flush()
             
-            #If the computer has take 5 or more beers, there is a 25% chance of repeating a character, but will not if the character is a number, because that looks ugly.
+                #If the computer has take 5 or more beers, there is a 25% chance of repeating a character, but will not if the character is a number, because that looks ugly.
             if char in numbers:
                 pass
             else:
@@ -156,28 +163,23 @@ while (bottles >= 1):
 
 '''
 input = 5
-
 output:
 5 bottles of beer on the wall, 
 5 bottles of beer. 
 Take one down, pass it around, 
 4 bottles of beer on the wall.
-
 4 bottles of beer on the wall, 
 4 bottles of beer. 
 Take one down, pass it around, 
 3 bottles of beer on the wall.
-
 3 bottles of beer on the wall, 
 3 bottles of beer. 
 Take one down, pass it around,*hic*
 2 bottles of beer on the wall.
-
 2 bOTTlEs of bEer on THe walL, 
 2 boTTleS Of beEr. 
 TaKe oNe dOwn, paSs It arounD, 
 1 boTTle Of Beer On The waLl.
-
 1 BooTTtlE OF beeR On The Wall, 
 1 BOoTTlE OF  bEeR. 
 TTaakkee oone dOWN, *hic*Ass Iit AaRoounnD, 
